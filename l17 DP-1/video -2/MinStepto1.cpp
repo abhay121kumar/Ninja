@@ -50,7 +50,7 @@ Step 3 : n = 2 / 2 = 1
 
 #include <iostream>
 using namespace std;
-
+#include<bits/stdc++.h>
 int MinStepTo1_1(int n)
 {
     int count = 1;
@@ -96,10 +96,30 @@ int MinStepTo1_1(int n)
     return count;
 }
 
+int MinStepTo1_1_M_2(int n,int x,int y,int z){
+
+    if(n<=1){
+        return 0;
+    }
+    if(n%2 == 0){
+        x=n/2;
+    }
+    if(n%3 == 0){
+        y=n/3;
+    }
+    if(n%2 != 0 && n%3 != 0){
+        z=n-1;
+    }
+    n = min(x,min(y,z));
+    int ans = MinStepTo1_1_M_2(n,x,y,z) + 1;
+    return ans;
+}
+
 int main()
 {
     int n;
     cin >> n;
     cout << MinStepTo1_1(n) << endl;
+    cout << MinStepTo1_1_M_2(n,INT_MAX,INT_MAX,INT_MAX) << endl;
     return 0;
 }
