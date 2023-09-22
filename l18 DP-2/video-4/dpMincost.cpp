@@ -1,53 +1,68 @@
-#include<iostream>
+
+
+
+
+
+// Wrong Output coming please correct it
+
+
+
+
+#include <iostream>
 using namespace std;
-#include<climits>//for INT_MAX
+#include <climits> //for INT_MAX
 
-int minCostHelper(int** arr,int** input,int n,int m,int i,int j){
-    //base case
-    if(i==n-1 && j==m-1){
-        return arr[i][j];
+int minCost_DP(int **arr, int n, int m)
+{
+    int **input = new int *[n];
+    for (int i = 0; i < n; i++)
+    {
+        input[i] = new int[m];
     }
-    if(i>=n || j>=m){
-        return INT_MAX;
+
+    // Fill the last cell i.e destination
+    input[n - 1][m - 1] = arr[n - 1][m - 1];
+
+    // Fill last row(right to left)
+    for (int j = m - 2; j >= 0; j--)
+    {
+        input[n - 1][j] = input[n - 1][j + 1] + input[n - 1][j];
     }
 
-    if(input[i][j] != -1){
-        return input[i][j];
+    // Fill last column(bottom to top)
+    for (int i = n - 2; i >= 0; i--)
+    {
+        input[i][m - 1] = input[i + 1][m - 1] + input[i][m - 1];
     }
-    //recursive call
-    int x = minCostHelper(arr,input,n,m,i,j+1);
-    int y = minCostHelper(arr,input,n,m,i+1,j+1);
-    int z = minCostHelper(arr,input,n,m,i+1,j);
 
-    //small claculation
-    input[i][j] = min(x,min(y,z)) + arr[i][j];
-
-    return input[i][j];
-}
-
-int minCost(int** arr,int n,int m){
-    int **input = new int*[n+1];
-    for(int i=0;i<n+1;i++){
-        input[i] = new int[m+1];
-        for(int j=0;j<m+1;j++){
-            input[i][j] = -1;
+    // Fill remaining cells
+    for (int i = n - 2; i >= 0; i--)
+    {
+        for (int j = m - 2; j >= 0; j--)
+        {
+            input[i][j] = min(input[i][j + 1], min(input[i + 1][j + 1], input[i + 1][j])) + input[i][j];
         }
     }
-    return minCostHelper(arr,input,n,m,0,0);
+
+    return input[0][0];
 }
 
-int main(){
-    int n,m;
-    cin>>n>>m;
+int main()
+{
+    int n, m;
+    cin >> n >> m;
 
-    int **arr = new int*[n];
-    for(int i=0;i<n;i++){
+    int **arr = new int *[n];
+    for (int i = 0; i < n; i++)
+    {
         arr[i] = new int[m];
-        for(int j=0;j<m;j++){
-            cin>>arr[i][j];
+        for (int j = 0; j < m; j++)
+        {
+            cin >> arr[i][j];
         }
     }
-    cout<<minCost(arr,n,m)<<endl;   
+    cout << minCost_DP(arr, n, m) << endl;
+
     return 0;
 }
 
@@ -74,7 +89,7 @@ Sample Input 3 :
 5 6
 9 6 0 12 90 1
 2 7 8 5 78 6
-1 6 0 5 10 -4 
+1 6 0 5 10 -4
 9 6 2 -10 7 4
 10 -2 0 5 5 7
 
