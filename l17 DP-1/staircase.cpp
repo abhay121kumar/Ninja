@@ -95,7 +95,7 @@ int starecase_m3(int n){
 int main(){
     int n;
     cin>>n;
-    cout<<starecase_m1(n)<<endl;
+    // cout<<starecase_m1(n)<<endl;
     cout<<starecase_m2(n)<<endl;
     cout<<starecase_m3(n)<<endl;
 }
