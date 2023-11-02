@@ -6,6 +6,7 @@ using namespace std;
 #include <map>
 #include <vector>
 
+/*
 int main()
 {
 
@@ -34,4 +35,29 @@ int main()
     //     ourMap[input[i] + sum] = i;
     //     sum = input[i] + sum;
     // }
+}
+
+*/
+
+int main(){
+    int a[] = {2,2,2,1,1,1,3,4,4};
+    map<int,int> ourMap;
+    // for(int i=0;i<9;i++){
+    //     if(ourMap.count(a[i]>0)){
+    //         ourMap[a[i]]+=1;
+    //     }else{
+    //         ourMap[a[i]]=1;
+    //     }
+    // }
+     for(int i=0;i<9;i++){
+        if(ourMap.count(a[i]>0)){
+            ourMap[a[i]]+=1;
+        }else{
+            ourMap[a[i]]=1;
+        }
+    }
+    for(auto x:ourMap){
+        cout<<x.first<<" "<<x.second<<endl;
+    }
+    return 0;
 }
