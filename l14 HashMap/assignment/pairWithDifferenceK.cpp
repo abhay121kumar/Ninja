@@ -5,7 +5,8 @@ Chapter Assignment
 Problem Statement: Pairs with difference K
 Problem Level: MEDIUM
 Problem Description:
-You are given with an array of integers and an integer K. You have to find and print the count of all such pairs which have difference K.
+You are given with an array of integers and an integer K. You have to find and print the count of all such pairs which have 
+difference K.
 Note: Take absolute difference between the elements of the array.
 Input Format:
 The first line of input contains an integer, that denotes the value of the size of the array. Let us denote it with the symbol n.

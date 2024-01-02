@@ -110,6 +110,7 @@ void printTree(BinaryTreeNode<int>* root){
         cout<<endl;
     }
 }
+
 vector<int>* rootToNodePath(BinaryTreeNode<int>* root,int data){
     if(root==NULL){
         return NULL;

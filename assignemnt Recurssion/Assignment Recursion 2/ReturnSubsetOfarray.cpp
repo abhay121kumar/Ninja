@@ -166,78 +166,39 @@ int main()
 
 */
 
-int subsetOfArray(int input[],int n,int output[][20])
-{
-    if(n==1)
-    {
-        output[0][0] = 0;
-        output[0][1] = 1;
-        output[1][1] = input[0];
-        return 2;
+
+
+
+
+
+// striver code
+
+vector<vector<int>> longestSubet(int index, vector<int> input, vector<int> output, vector<vector<int>> ans){
+    if(index==input.size()-1){
+        ans.push_back(output);
+        return ans;
     }
-    int smallOutput = subsetOfArray(input+1,n-1,output);
-    for(int i=0;i<smallOutput;i++)
-    {
-        
-    }
+    output.push_back(input[index]);
+    longestSubet(index+1,input,output,ans);
+    output.pop_back();
+    longestSubet(index+1,input,output,ans);
+    return ans;
 }
 
+int main(){
+    vector<int> input = {1,2,3};
+    for(auto it:input){
+        cout<<it<<" ";
+    }
+    vector<int> output;
+    vector<vector<int>> ans;
+    vector<vector<int>> answer = longestSubet(0,input,output,ans);
+    for(auto it:answer){
+        cout<<it<<" ";
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-// int main()
-// {
-//     int n;
-//     int i=0,j=0;
-//     cin>>n;
-//     int input[n] = {1,2,3};
-//     for(int i=0;i<n;i++)
-//     {
-//         cin>>input[i];
-//     }
-//     int x = pow(2,3);
-//     int y = n+1;
-//     int output[x][y];
-//     int output[20][20];
-//     int small = subsetOfArray(input,n,output);
-//     for(int i=0;i<small;i++)
-//     {
-//         for(int j=0;j<small;j++)
-//         {
-//             cout<<output[i][j];
-//         }
-//         cout<<endl;
-//     }
-//     return 0;
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return 0;
+}
 
 
 
