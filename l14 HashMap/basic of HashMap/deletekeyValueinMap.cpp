@@ -21,7 +21,7 @@ int main(){
     // }
     for(auto it:s){
         if(mpp[it]>1 && k>0){
-            mpp[it]-=1;
+            mpp[it]-=1; 
             k--;
         }
     }

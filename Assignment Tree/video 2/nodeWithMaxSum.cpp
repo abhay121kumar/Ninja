@@ -8,8 +8,10 @@ Problem Description:
 Given a generic tree, find and return the node for which sum of its data and data of all its child nodes is maximum.
  In the sum, data of the node and data of its immediate child nodes has to be taken.
 Input format :
-The first line of input contains data of the nodes of the tree in level order form. The order is: data for root node, 
-number of children to root node, data of each of child nodes and so on and so forth for each node. The data of the nodes of the 
+The first line of input contains data of the nodes of the tree in level order form. The order is: 
+data for root node, 
+number of children to root node, data of each of child nodes and so on and so forth for each node. 
+The data of the nodes of the 
 tree is
 separated by space.
 
